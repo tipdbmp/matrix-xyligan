@@ -1,0 +1,47 @@
+body { font-family: Verdana; }
+
+
+#matrix td {
+    padding: 8px;
+    text-align: center;
+    font-size: 21pt;
+}
+
+
+
+
+.blue-underline { border-bottom: 1px dashed blue }
+.numy { color: blue; }
+
+.awesome-btn
+{
+    background: #F8F8F8;
+    border: 1px solid #D3D3D3;
+    color: #333333;
+
+    font-family: arial;
+    font-size: 11px;
+    font-weight: bold;
+
+    height: 28px;
+    line-height: normal;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: inline-block;
+
+    padding: 0 10px;
+    outline: 0 none;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: normal;
+
+    user-select: none;
+}
+
+.awesome-btn:active
+{
+/*    border: 1px solid #8285a5;*/
+}
+

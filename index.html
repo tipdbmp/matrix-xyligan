@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+
+<style type="text/css">
+    @import url("our/css/reset.css");
+    @import url("our/css/bootstrap.css");
+    @import url("our/css/_.css");
+</style>
+
+<!--<script src="our/js/libs/jquery-1.9.1.min.js" type="text/javascript"></script>-->
+<script src="our/js/libs/angular.min.js" type="text/javascript"></script>
+<script src="our/js/libs/adjustable-number.js" type="text/javascript"></script>
+<!--<script src="our/js/libs/roles.js" type="text/javascript"></script>-->
+<!--<script src="our/js/libs/ui-bootstrap-tpls-0.9.0.min.js" type="text/javascript"></script>-->
+<script src="our/js/libs/lodash.min.js" type="text/javascript"></script>
+<!--<script src="our/js/libs/sprintf-0.7-beta1.js" type="text/javascript"></script>-->
+
+<!--<script src="our/js/compat.js" type="text/javascript"></script>-->
+<!--<script src="our/js/libs/Joose.js" type="text/javascript"></script>-->
+<script src="index/matrix-xyligan.js" type="text/javascript"></script>
+<script src="index/index.js" type="text/javascript"></script>
+
+<title>[matrix (x, y)ligan]</title>
+</head>
+
+<body>
+<div id="page">
+
+<div ng-controller="index">
+
+    rows:
+    <adjustable-number
+        num="matrix.rows_count"
+        step="1"
+        min="1" max="999"
+        speed="3"
+        numclass="numy bigish"
+        inputclass="bigish shorty"
+        cursor="col-resize"
+    >
+    </adjustable-number>
+
+    columns:
+    <adjustable-number
+        num="matrix.columns_count"
+        step="1"
+        min="1" max="999"
+        speed="3"
+        numclass="numy bigish"
+        inputclass="bigish shorty"
+        cursor="col-resize"
+    >
+    </adjustable-number>
+
+    delay:
+    <adjustable-number
+        num="delay"
+        step="1"
+        min="1" max="1000"
+        speed="1"
+        numclass="numy bigish"
+        inputclass="bigish shorty"
+        cursor="col-resize"
+    >
+    </adjustable-number>
+
+    matrix:
+    <select ng-change="unleash_the_numbers()" ng-model="matrix_type" ng-options="type for type in matrix_types"></select>
+    <span ng-show="matrix_type == 'spiral'">
+        <select ng-change="unleash_the_numbers()" ng-model="spiral_matrix_type" ng-options="type for type in filter_spiral_matrix_types(spiral_matrix_types)"></select>
+        <span ng-show="spiral_matrix_type == 'inward'">
+            <select ng-change="unleash_the_numbers()" ng-model="starting_position_name" ng-options="position_name for position_name in starting_position_names"></select>
+        </span>
+        <select ng-change="unleash_the_numbers()" ng-model="direction" ng-options="direction for direction in directions"></select>
+    </span>
+    <span ng-show="matrix_type == 'zigzag'">
+        <select ng-change="unleash_the_numbers()" ng-model="starting_position_name" ng-options="position_name for position_name in starting_position_names"></select>
+    </span>
+    <br>
+
+    <table id="matrix">
+        <tr ng-repeat="row in matrix_indecies">
+            <td ng-repeat="index in row">
+<!--                {{ index }}-->
+            </td>
+        </tr>
+    </table>
+
+<!--
+        rows: {{ matrix.rows_count }}
+        columns: {{ matrix.columns_count }}
+        matrix_type: {{ matrix_type }}
+        spiral_matrix_type: {{ spiral_matrix_type }}
+        starting_position_name: {{ starting_position_name }}
+        direction: {{ direction }}
+-->
+<!--    <br>-->
+<!--    <button ng-click="test_stuff()" class="awesome-btn">test stuff</button>-->
+</div>
+
+
+</div>
+</body>
+</html>
